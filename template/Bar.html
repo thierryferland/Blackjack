@@ -1,0 +1,39 @@
+<html>
+	<head>
+		{{ refresh }}
+		<link type="text/css" rel="stylesheet" href="/stylesheet/bar.css" />
+	</head>
+	<body>
+		{% if simulating %}
+			<div class="meter-wrap">
+				<div class="meter-value" style="background-color: #3072F3; width: {{ progress }};">
+					<div class="meter-text">
+					Simulating...{{ progress }}
+					</div>
+				</div>
+			</div>
+		{% else %}
+			{% if done %}
+				{% for x in sim.stats %}
+				    <table>
+				        <tr>
+				            <td>{{ x.name }} :</td>
+				            <td>{{ x.value }} </td>
+				        </tr>
+				    </table>
+				{% endfor %}
+				<div id="figure">
+						<p><img src={{ sim.hist.url }}/></p>
+				</div>
+			{% else %}
+				<div class="meter-wrap">
+					<div class="meter-value" style="background-color: #3072F3; width: 0%;">
+						<div class="meter-text">
+						Ready to Simulate...
+						</div>
+					</div>
+				</div>
+			{% endif %}
+		{% endif %}
+	</body>
+</html>

@@ -1,0 +1,13 @@
+application: twentyonesim
+version: 1
+runtime: python
+api_version: 1
+
+default_expiration: "30m"
+
+handlers:
+- url: /stylesheet
+  static_dir: stylesheet
+
+- url: /.*
+  script: main.py
